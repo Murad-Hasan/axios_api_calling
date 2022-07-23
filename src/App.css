@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.button {
+  background-color: #f1f1f1;
+  color: rgb(39, 37, 37);
+  border: none;
+  padding: .5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+.button:hover {
+  background-color: rgb(159, 158, 158);
+  color: #f1f1f1;
+}
