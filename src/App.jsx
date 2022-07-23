@@ -7,6 +7,7 @@ function App() {
   const [serviceData, setServiceData] = useState([]);
   const [userData, setUserData] = useState([]);
   const [productData, setProductData] = useState([]);
+  const [commentsData, setCommentsData] = useState([]);
 
   function getDataByPath(path) {
     getApiData(path).then((res) => {
@@ -20,14 +21,22 @@ function App() {
         case "product":
           setProductData(res.data);
           break;
+        case "comments":
+          setCommentsData(res.data);
+          break;
         default:
           break;
       }
     });
   }
 
+  console.log(commentsData);
+
+  // product data grater then 100
   const highPrice = productData.filter((item) => item.price > 100);
-  console.log(highPrice);
+
+  //First 50 comments
+  const first50Comments = commentsData.slice(0, 50);
 
   return (
     <div className="App">
@@ -59,6 +68,16 @@ function App() {
         return (
           <div key={index}>
             <h2>{data.title}</h2>
+          </div>
+        );
+      })}
+      <button className="button" onClick={() => getDataByPath(paths[1])}>
+        Get Comments
+      </button>
+      {first50Comments.map((data, index) => {
+        return (
+          <div key={index}>
+            <h2>{`${index+1}`} . {data.body}</h2>
           </div>
         );
       })}
