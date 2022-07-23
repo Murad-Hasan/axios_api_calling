@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { getService } from "./network/lib/service";
+import { getApiData } from "./network/lib/apiData";
 
 function App() {
-  const [getServiceData, setGetServiceData] = useState([]);
-
+  const paths = ["service", "comments", "user", "product"];
   useEffect(() => {
-    getService().then(function (response) {
-      setGetServiceData(response.data);
+    paths.forEach((path) => {
+      getApiData(path).then((res) => {
+        console.log(`${path}` , res.data);
+      });
     });
   }, []);
-
-  console.log(getServiceData);
   return (
     <div className="App">
       <h1>API Calling </h1>
-      <button className="button">
-        Get Service Data
-      </button>
+      <button className="button">Get Service Data</button>
     </div>
   );
 }
